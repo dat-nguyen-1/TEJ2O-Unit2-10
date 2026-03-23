@@ -10,36 +10,38 @@ const BLACK: NeoPixelColors = NeoPixelColors.Black
 const RED: NeoPixelColors = NeoPixelColors.Red
 
 // Initialize Neopixel strip
-const NEOPIXEL_STRIP: neopixel.Strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
-NEOPIXEL_STRIP.clear()
-NEOPIXEL_STRIP.show()
+let neopixelStrip: neopixel.Strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+neopixelStrip.clear()
+neopixelStrip.show()
 
 // Initialize variables
-let lightValue: number = 0
+let lightValue: number = 5
 
 input.onButtonPressed(Button.A, function() {
     // Set all Neopixels to BLACK
-    NEOPIXEL_STRIP.clear()
+    neopixelStrip.clear()
 
     // Get light level
     lightValue = input.lightLevel()
+    basic.clearScreen()
+    basic.showString(lightValue.toString())
 
     // Turn on neopixels according to light level
     if (lightValue > 52) {
-        NEOPIXEL_STRIP.setPixelColor(0, RED)
+        neopixelStrip.setPixelColor(0, RED)
     }
     if (lightValue > 104) {
-        NEOPIXEL_STRIP.setPixelColor(1, RED)
+        neopixelStrip.setPixelColor(1, RED)
     }
     if (lightValue > 156) {
-        NEOPIXEL_STRIP.setPixelColor(2, RED)
+        neopixelStrip.setPixelColor(2, RED)
     }
     if (lightValue > 208) {
-        NEOPIXEL_STRIP.setPixelColor(3, RED)
+        neopixelStrip.setPixelColor(3, RED)
     }
 
     // Send data to Neopixels
-    NEOPIXEL_STRIP.show()
+    neopixelStrip.show()
 })
 
 
