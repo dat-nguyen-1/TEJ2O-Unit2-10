@@ -15,16 +15,19 @@ NEOPIXEL_STRIP.clear()
 NEOPIXEL_STRIP.show()
 
 // initialize variables
-let lightValue: number = 5
+let lightValue: number = 0
+
+// initialize display
+basic.showIcon(IconNames.Happy)
 
 input.onButtonPressed(Button.A, function() {
     // set all Neopixels to BLACK
     NEOPIXEL_STRIP.clear()
+    basic.clearScreen()
+    basic.pause(100)
 
     // Get light level
     lightValue = input.lightLevel()
-    basic.clearScreen()
-    basic.showString(lightValue.toString())
 
     // turn on neopixels according to light level
     if (lightValue > 52) {
