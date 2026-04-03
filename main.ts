@@ -6,7 +6,6 @@
 */
 
 // define Neopixel colours as constants
-const BLACK: NeoPixelColors = NeoPixelColors.Black
 const RED: NeoPixelColors = NeoPixelColors.Red
 
 // initialize Neopixel strip
