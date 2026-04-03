@@ -1,9 +1,41 @@
 """
-Created by: Mr. Coxall
-Created on: Sep 2020
-This module is a Micro:bit MicroPython program
+Created by: Dat Nguyen
+Created on: Apr 2026
+This module turns Neopixels on according to light level.
 """
 
 from microbit import *
+from neopixel import NeoPixel
 
-display.scroll("Hello, World!")
+# define color constants
+RED = (255, 0, 0)
+
+# initialize neopixel strip
+NEOPIXEL_STRIP = neopixel.NeoPixel(pin16, 4)
+NEOPIXEL_STRIP.clear()
+NEOPIXEL_STRIP.show()
+
+# initialize display
+display.clear()
+display.show(Image.HAPPY)
+
+# main loop
+while True:
+    # get light level
+    light_level = display.read_light_level()
+
+    # turn on neopixels according to light level
+    if lightValue > 52:
+        NEOPIXEL_STRIP[0] = RED
+
+    if lightValue > 104:
+        NEOPIXEL_STRIP[1] = RED
+
+    if lightValue > 156:
+        NEOPIXEL_STRIP[2] = RED
+
+    if lightValue > 208:
+        NEOPIXEL_STRIP[3] = RED
+
+    # show Neopixels
+    NEOPIXEL_STRIP.show()
