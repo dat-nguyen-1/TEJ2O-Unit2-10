@@ -11,7 +11,7 @@ from neopixel import NeoPixel
 RED = (255, 0, 0)
 
 # initialize neopixel strip
-NEOPIXEL_STRIP = neopixel.NeoPixel(pin16, 4)
+NEOPIXEL_STRIP = NeoPixel(pin16, 4)
 NEOPIXEL_STRIP.clear()
 NEOPIXEL_STRIP.show()
 
@@ -21,21 +21,26 @@ display.show(Image.HAPPY)
 
 # main loop
 while True:
-    # get light level
-    light_level = display.read_light_level()
+    # handle button A press
+    if button_a.was_pressed():
+        # clear neopixels
+        NEOPIXEL_STRIP.clear()
 
-    # turn on neopixels according to light level
-    if light_level > 52:
-        NEOPIXEL_STRIP[0] = RED
+        # get light level
+        light_level = display.read_light_level()
 
-    if light_level > 104:
-        NEOPIXEL_STRIP[1] = RED
+        # turn on neopixels according to light level
+        if light_level > 52:
+            NEOPIXEL_STRIP[0] = RED
 
-    if light_level > 156:
-        NEOPIXEL_STRIP[2] = RED
+        if light_level > 104:
+            NEOPIXEL_STRIP[1] = RED
 
-    if light_level > 208:
-        NEOPIXEL_STRIP[3] = RED
+        if light_level > 156:
+            NEOPIXEL_STRIP[2] = RED
 
-    # show Neopixels
-    NEOPIXEL_STRIP.show()
+        if light_level > 208:
+            NEOPIXEL_STRIP[3] = RED
+
+        # show Neopixels
+        NEOPIXEL_STRIP.show()
