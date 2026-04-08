@@ -19,13 +19,13 @@ let lightValue: number = 0
 // initialize display
 basic.showIcon(IconNames.Happy)
 
+// handle button A press
 input.onButtonPressed(Button.A, function() {
     // set all Neopixels to BLACK
     NEOPIXEL_STRIP.clear()
     basic.clearScreen()
-    basic.pause(100)
 
-    // Get light level
+    // get light level
     lightValue = input.lightLevel()
 
     // turn on neopixels according to light level
@@ -44,6 +44,10 @@ input.onButtonPressed(Button.A, function() {
 
     // show Neopixels
     NEOPIXEL_STRIP.show()
+
+    // display light level
+    basic.showNumber(lightValue)
+
+    // reset display
+    basic.showIcon(IconNames.Happy)
 })
-
-
