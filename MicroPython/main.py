@@ -44,3 +44,10 @@ while True:
 
         # show Neopixels
         NEOPIXEL_STRIP.show()
+
+        # display light level
+        display.scroll(str(light_level))
+
+        # reset display
+        display.show(Image.HAPPY)
+                
